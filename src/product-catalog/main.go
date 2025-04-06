@@ -171,7 +171,7 @@ func main() {
 	<-ctx.Done()
 
 	srv.GracefulStop()
-	log.Println("Product Catalog gRPC server stopped")
+	log.Println("Product Catalog gRPC server stopped...")
 }
 
 type productCatalog struct {
@@ -197,7 +197,7 @@ func readProductFiles() ([]*pb.Product, error) {
 		}
 	}
 
-	// read the contents of each .json file and unmarshal into a ListProductsResponse
+	// read the contents of each .json file and unmarshal into a ListProductsResponsesss
 	// then append the products to the catalog
 	var products []*pb.Product
 	for _, f := range jsonFiles {
@@ -250,7 +250,7 @@ func (p *productCatalog) GetProduct(ctx context.Context, req *pb.GetProductReque
 		attribute.String("app.product.id", req.Id),
 	)
 
-	// GetProduct will fail on a specific product when feature flag is enabled
+	// GetProduct will fail on a specific product when feature flag is enabled of indida
 	if p.checkProductFailure(ctx, req.Id) {
 		msg := fmt.Sprintf("Error: Product Catalog Fail Feature Flag Enabled")
 		span.SetStatus(otelcodes.Error, msg)
